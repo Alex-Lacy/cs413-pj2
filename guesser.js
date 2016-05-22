@@ -112,6 +112,7 @@ function load_title(){
 	var question_list = [];
 	var answer_list = [];
 	
+
 	for(var j=1; j<= 1; j++){
 		var tempq = new PIXI.Sprite(PIXI.Texture.fromFrame('question_' + j + '.png'));
 		gameview.addChild(tempq);
@@ -137,6 +138,42 @@ function load_title(){
 		}
 		question_list.push(tempq);
 	}
+
+	var wrong_texture = PIXI.Texture.fromFrame('wrong.png');
+	var wrong1 = new PIXI.Sprite(wrong_texture);
+	gameview.addChild(wrong1);
+	wrong1.anchor.x = .5;
+	wrong1.anchor.y = .5;
+	wrong1.position.x = 650;
+	wrong1.position.y = 100;
+	wrong1.scale.x = .5;
+	wrong1.scale.y = .5;
+	wrong1.renderable = false;
+
+
+
+	var wrong2 = new PIXI.Sprite(wrong_texture);
+	gameview.addChild(wrong2);
+	wrong2.anchor.x = .5;
+	wrong2.anchor.y = .5;
+	wrong2.position.x = 700;
+	wrong2.position.y = 100;
+	wrong2.scale.x = .5;
+	wrong2.scale.y = .5;
+	wrong2.renderable = false;
+
+
+	var wrong3 = new PIXI.Sprite(wrong_texture);
+	gameview.addChild(wrong3);
+	wrong3.anchor.x = .5;
+	wrong3.anchor.y = .5;
+	wrong3.position.x = 750;
+	wrong3.position.y = 100;
+	wrong3.scale.x = .5;
+	wrong3.scale.y = .5;
+	wrong3.renderable = false;
+
+	
 	/*
 	var question1 = new PIXI.Sprite(PIXI.Texture.fromFrame("question_1.png"));
 	gameview.addChild(question1);
@@ -146,18 +183,33 @@ function load_title(){
 	question1.position.y = 200;
 */	
 
+	var correct_answers = [1, 3];
+	var num_wrong = 0;
+	var wrong_marks = [wrong1, wrong2, wrong3];
+	function isCorrect(sprite, num_q, num_a){
+
+		if(correct_answers[num_q - 1] == num_a){
+			positionToAnswer(sprite);
+		}
+
+		else{
+			num_wrong += 1;
+			console.log(num_wrong);console.log(wrong_marks);
+			wrong_marks[num_wrong - 1].renderable = true;
+			//if(num_wrong == 3){
+				// Execute losing screen
+			//}
+
+		}
+}
+
 } // ends load_title
 
 
-var correct_answers = [1, 3];
-function isCorrect(sprite, num_q, num_a){
 
-	if(correct_answers[num_q - 1] == num_a){
-		positionToAnswer(sprite);
-	}
 
-	// else display x
-}
+
+
 function positionToAnswer(sprite){
 
 
