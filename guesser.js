@@ -109,34 +109,55 @@ function load_title(){
 
 
 	// Sets the actual gameplay sprites
+	var question_list = [];
+	var answer_list = [];
+	
+	for(var j=1; j<= 1; j++){
+		var tempq = new PIXI.Sprite(PIXI.Texture.fromFrame('question_' + j + '.png'));
+		gameview.addChild(tempq);
+		tempq.anchor.x = 0;
+		tempq.anchor.y = .5;
+		tempq.position.x = 300;
+		tempq.position.y = 200;
+
+
+
+		for(var i=1; i<=4; i++){
+			var tempa = new PIXI.Sprite(PIXI.Texture.fromFrame('answer_' + j + '.' + i + '.png'));
+
+			tempa.anchor.x = .5;
+			tempa.anchor.y = .5;
+			tempa.position.x = i * (renderer.width / 5);
+			tempa.position.y = 400;
+			gameview.addChild(tempa);
+			tempa.interactive = true;
+			tempa.on('mousedown',isCorrect.bind(null, tempa, j, i));
+
+			answer_list.push(tempa);
+		}
+		question_list.push(tempq);
+	}
+	/*
 	var question1 = new PIXI.Sprite(PIXI.Texture.fromFrame("question_1.png"));
 	gameview.addChild(question1);
 	question1.anchor.x = 0;
 	question1.anchor.y = .5;
 	question1.position.x = 300;
 	question1.position.y = 200;
+*/	
+
+} // ends load_title
 
 
-	var answer_1_list = [];
-	for(var i=1; i<=4; i++){
-		var temp = new PIXI.Sprite(PIXI.Texture.fromFrame('answer_1.' + i + '.png'));
+var correct_answers = [1, 3];
+function isCorrect(sprite, num_q, num_a){
 
-		temp.anchor.x = .5;
-		temp.anchor.y = .5;
-		temp.position.x = i * (renderer.width / 5);
-		temp.position.y = 400;
-		gameview.addChild(temp);
-		temp.interactive = true;
-		temp.on('mousedown',positionToAnswer.bind(null,temp));
-
-		answer_1_list.push(temp);
+	if(correct_answers[num_q - 1] == num_a){
+		positionToAnswer(sprite);
 	}
 
-	
-
+	// else display x
 }
-
-
 function positionToAnswer(sprite){
 
 

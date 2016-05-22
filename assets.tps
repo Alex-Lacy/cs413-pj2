@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -100,7 +100,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -141,7 +141,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename></filename>
+                <filename>assets.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -158,7 +158,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <true/>
+        <false/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -170,13 +170,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -188,17 +188,18 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">answer_1.1.png</key>
-            <key type="filename">answer_1.2.png</key>
-            <key type="filename">answer_1.3.png</key>
-            <key type="filename">answer_1.4.png</key>
-            <key type="filename">hard.png</key>
-            <key type="filename">menu_bg.png</key>
-            <key type="filename">normal.png</key>
-            <key type="filename">press_enter.png</key>
-            <key type="filename">question_1.png</key>
-            <key type="filename">select_difficulty.png</key>
-            <key type="filename">welcome_words.png</key>
+            <key type="filename">assets/answer_1.1.png</key>
+            <key type="filename">assets/answer_1.2.png</key>
+            <key type="filename">assets/answer_1.3.png</key>
+            <key type="filename">assets/answer_1.4.png</key>
+            <key type="filename">assets/hard.png</key>
+            <key type="filename">assets/menu_bg.png</key>
+            <key type="filename">assets/normal.png</key>
+            <key type="filename">assets/press_enter.png</key>
+            <key type="filename">assets/question_1.png</key>
+            <key type="filename">assets/select_difficulty.png</key>
+            <key type="filename">assets/welcome_words.png</key>
+            <key type="filename">assets/wrong.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -206,17 +207,18 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>question_1.png</filename>
-            <filename>select_difficulty.png</filename>
-            <filename>welcome_words.png</filename>
-            <filename>answer_1.1.png</filename>
-            <filename>answer_1.2.png</filename>
-            <filename>answer_1.3.png</filename>
-            <filename>answer_1.4.png</filename>
-            <filename>hard.png</filename>
-            <filename>menu_bg.png</filename>
-            <filename>normal.png</filename>
-            <filename>press_enter.png</filename>
+            <filename>assets/select_difficulty.png</filename>
+            <filename>assets/welcome_words.png</filename>
+            <filename>assets/wrong.png</filename>
+            <filename>assets/answer_1.1.png</filename>
+            <filename>assets/answer_1.2.png</filename>
+            <filename>assets/answer_1.3.png</filename>
+            <filename>assets/answer_1.4.png</filename>
+            <filename>assets/hard.png</filename>
+            <filename>assets/menu_bg.png</filename>
+            <filename>assets/normal.png</filename>
+            <filename>assets/press_enter.png</filename>
+            <filename>assets/question_1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
