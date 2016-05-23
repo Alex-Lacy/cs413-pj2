@@ -188,6 +188,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/credits.png</key>
             <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/menu_bg.png</key>
             <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</key>
             <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</key>
@@ -217,6 +218,7 @@
             <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</filename>
             <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</filename>
             <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/win_text.png</filename>
+            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/credits.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

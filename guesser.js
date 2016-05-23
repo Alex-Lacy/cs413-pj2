@@ -4,6 +4,7 @@ var gameport = document.getElementById("gameport");
 var renderer = PIXI.autoDetectRenderer(806, 508);
 gameport.appendChild(renderer.view);
 
+
 var stage = new PIXI.Container();
 
 
@@ -18,6 +19,12 @@ stage.addChild(difficulty_select);
 var gameview = new PIXI.Container();
 stage.addChild(gameview);
 
+// A container for the credits screen
+var credits = new PIXI.Container();
+stage.addChild(credits);
+credits.interactive = true;
+credits.on('mousedown', reset);
+
 // Creates the titlescreen container and functionality
 var title_screen = new PIXI.Container();
 stage.addChild(title_screen);
@@ -26,16 +33,20 @@ title_screen.on('mousedown', changeView.bind(null,difficulty_select));
 // A container for the losing screen
 var losing_screen = new PIXI.Container();
 stage.addChild(losing_screen);
-losing_screen.on('mousedown', reset);
+losing_screen.on('mousedown', changeView.bind(null,credits));
 
 // A container for the winning screen
 var winning_screen = new PIXI.Container();
 stage.addChild(winning_screen);
-winning_screen.on('mousedown', reset);
+winning_screen.on('mousedown', changeView.bind(null,credits));
 
 // A container for the turtorial
 var turtorial = new PIXI.Container();
 stage.addChild(turtorial);
+
+
+var num_lives = 3; // 3 = normal, 1 = hard
+
 
 function reset(){
 	changeView(title_screen);
@@ -57,6 +68,9 @@ winning_screen.interactive = false;
 
 turtorial.visible = false;
 turtorial.interactive = false;
+
+credits.visible = false;
+credits.interactive = false;
 
 title_screen.visible = true;
 title_screen.interactive = true;
@@ -90,6 +104,9 @@ function load_menus() {
 
 	var winning_backgroud = new PIXI.Sprite(menu_background);
 	winning_screen.addChild(winning_backgroud);
+
+	var credits_background = new PIXI.Sprite(menu_background);
+	credits.addChild(credits_background);
 
 
 
@@ -141,6 +158,7 @@ function load_menus() {
 	normal.position.x = 400;
 	normal.position.y = 325;
 	normal.interactive = true;
+	normal.on('mousedown', setDifficulty.bind(null, 3));
 	normal.on('mousedown',changeView.bind(null,gameview));
 
 	var hard = new PIXI.Sprite(PIXI.Texture.fromFrame("hard.png"));
@@ -150,6 +168,8 @@ function load_menus() {
 	hard.position.x = 400;
 	hard.position.y = 400;
 	hard.interactive = true;
+	hard.on('mousedown', setDifficulty.bind(null, 1));
+	hard.on('mousedown',changeView.bind(null,gameview));
 
 
 	// Sets the turtorials sprites
@@ -195,37 +215,29 @@ function load_menus() {
 	win_click_anywhere.scale.y = .8;
 
 
+	// Sets the losing screens sprites
 	var you_lose = new PIXI.Sprite(PIXI.Texture.fromFrame('lose_text.png'));
 	losing_screen.addChild(you_lose);
 	you_lose.position.x = 100;
 	you_lose.position.y = 100;
 
-/*
-	function display_next_question(){
 
-		if (current_question != 0){
+	// Sets the credit screen sprites
+	var credit_text = new PIXI.Sprite(PIXI.Texture.fromFrame('credits.png'));
+	credits.addChild(credit_text);
 
-			question_list[current_question-1].visible = false;
-
-			for(var l = answer_set - 4; l >= answer_set - 7; l--){
-			answer_list[l].visible = false;
-			answer_list[l].interactive = false;
-			}
-		}
-
-		question_list[current_question].visible = true;
-		for(var k = answer_set; k >= answer_set - 3; k--){
-			answer_list[k].visible = true;
-			answer_list[k].interactive = true;
-
-		}
-		answer_set += 4;
-		current_question += 1;
-
-	}*/
+	var credits_click_anywhere = new PIXI.Sprite(click_anywhere);
+	credits.addChild(credits_click_anywhere);
+	credits_click_anywhere.anchor.x = .5;
+	credits_click_anywhere.anchor.y = .5;
+	credits_click_anywhere.position.x = 600;
+	credits_click_anywhere.position.y = 450;
+	credits_click_anywhere.scale.x = .8;
+	credits_click_anywhere.scale.y = .8;
 
 	
 } // ends load_menus
+
 
 
 
@@ -323,15 +335,6 @@ function load_game(){
 
 
 
-	
-	/*
-	var question1 = new PIXI.Sprite(PIXI.Texture.fromFrame("question_1.png"));
-	gameview.addChild(question1);
-	question1.anchor.x = 0;
-	question1.anchor.y = .5;
-	question1.position.x = 300;
-	question1.position.y = 200;
-*/	
 
 	
 	//var num_right = 0;
@@ -368,7 +371,7 @@ function load_game(){
 			wrong_marks[num_wrong - 1].visible = true;
 			enlarge(wrong_marks[num_wrong - 1])
 
-			if(num_wrong == 3){
+			if(num_wrong == num_lives){
 				// add sound effect for getting 3 wrong
 				
 				num_wrong = 0;
@@ -381,6 +384,7 @@ function load_game(){
 
 		}
 	}
+
 
 
 	function display_next_question(){
@@ -421,11 +425,10 @@ function load_game(){
 
 
 
+function setDifficulty(new_lives){
 
-
-
-
-
+	num_lives = new_lives;
+}
 
 
 
