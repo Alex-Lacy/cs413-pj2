@@ -13,7 +13,6 @@ var stage = new PIXI.Container();
 var difficulty_select = new PIXI.Container();
 stage.addChild(difficulty_select);
 
-
 // A container for the actual gameplay
 var gameview = new PIXI.Container();
 stage.addChild(gameview);
@@ -24,12 +23,25 @@ stage.addChild(title_screen);
 title_screen.interactive = true;
 title_screen.on('mousedown', changeView.bind(null,difficulty_select));
 
+// A container for the losing screen
+var losing_screen = new PIXI.Container();
+stage.addChild(losing_screen);
+losing_screen.on('mousedown', reset);
+
+function reset(){
+	changeView(title_screen);
+	load_sprites();
+}
+
 // Sets the defaults for when the game is loaded
 gameview.visible = false;
 gameview.interactive = false;
 
 difficulty_select.visible = false;
 difficulty_select.interactive = false;
+
+losing_screen.visible = false;
+losing_screen.interactive = false;
 
 title_screen.visible = true;
 
@@ -40,10 +52,10 @@ title_screen.visible = true;
 // Reads in the spritesheet
 PIXI.loader
 	.add("assets.json")
-	.load(load_title);
+	.load(load_sprites);
 
 // Creates sprites from spritesheet
-function load_title(){
+function load_sprites() {
 	 
 	// Sets all of the sprites that use the generic menu background
 	var menu_background = PIXI.Texture.fromFrame("menu_bg.png");
@@ -56,6 +68,9 @@ function load_title(){
 
 	var game_background = new PIXI.Sprite(menu_background);
 	gameview.addChild(game_background);
+
+	var losing_background = new PIXI.Sprite(menu_background);
+	losing_screen.addChild(losing_background);
 
 
 
@@ -111,33 +126,48 @@ function load_title(){
 	// Sets the actual gameplay sprites
 	var question_list = [];
 	var answer_list = [];
+	var correct_answers = [1, 3];
 	
 
-	for(var j=1; j<= 1; j++){
+	for(var j=1; j<= 2; j++){
 		var tempq = new PIXI.Sprite(PIXI.Texture.fromFrame('question_' + j + '.png'));
 		gameview.addChild(tempq);
 		tempq.anchor.x = 0;
 		tempq.anchor.y = .5;
 		tempq.position.x = 300;
 		tempq.position.y = 200;
-
+		tempq.visible = false;
+		tempq.number = j;
+		tempq.answer = correct_answers[j-1];
+		//after randomized
+		// if answers_list[tempq.j] == tempa.i
 
 
 		for(var i=1; i<=4; i++){
 			var tempa = new PIXI.Sprite(PIXI.Texture.fromFrame('answer_' + j + '.' + i + '.png'));
 
+			gameview.addChild(tempa);
 			tempa.anchor.x = .5;
 			tempa.anchor.y = .5;
 			tempa.position.x = i * (renderer.width / 5);
 			tempa.position.y = 400;
-			gameview.addChild(tempa);
-			tempa.interactive = true;
+			tempa.interactive = false;
+			tempa.visible = false;
+			tempa.number = i;
+			tempa.question = j;
 			tempa.on('mousedown',isCorrect.bind(null, tempa, j, i));
 
 			answer_list.push(tempa);
 		}
 		question_list.push(tempq);
 	}
+
+	question_list.sort(function () {
+		return Math.random() > .5;
+	});
+
+
+
 
 	var wrong_texture = PIXI.Texture.fromFrame('wrong.png');
 	var wrong1 = new PIXI.Sprite(wrong_texture);
@@ -146,9 +176,9 @@ function load_title(){
 	wrong1.anchor.y = .5;
 	wrong1.position.x = 650;
 	wrong1.position.y = 100;
-	wrong1.scale.x = .5;
-	wrong1.scale.y = .5;
-	wrong1.renderable = false;
+	wrong1.scale.x = .01;
+	wrong1.scale.y = .01;
+	wrong1.visible = false;
 
 
 
@@ -158,9 +188,9 @@ function load_title(){
 	wrong2.anchor.y = .5;
 	wrong2.position.x = 700;
 	wrong2.position.y = 100;
-	wrong2.scale.x = .5;
-	wrong2.scale.y = .5;
-	wrong2.renderable = false;
+	wrong2.scale.x = .01;
+	wrong2.scale.y = .01;
+	wrong2.visible = false;
 
 
 	var wrong3 = new PIXI.Sprite(wrong_texture);
@@ -169,9 +199,13 @@ function load_title(){
 	wrong3.anchor.y = .5;
 	wrong3.position.x = 750;
 	wrong3.position.y = 100;
-	wrong3.scale.x = .5;
-	wrong3.scale.y = .5;
-	wrong3.renderable = false;
+	wrong3.scale.x = .01;
+	wrong3.scale.y = .01;
+	wrong3.visible = false;
+
+
+	var you_lose = new PIXI.Sprite(PIXI.Texture.fromFrame('lose_text.png'));
+	losing_screen.addChild(you_lose);
 
 	
 	/*
@@ -183,26 +217,106 @@ function load_title(){
 	question1.position.y = 200;
 */	
 
-	var correct_answers = [1, 3];
+	
+	//var num_right = 0;
 	var num_wrong = 0;
+	//var num_asked = 0;
+	var current_question = 0;
+	var answer_set = 3; // groups of 3
+
 	var wrong_marks = [wrong1, wrong2, wrong3];
+
+
 	function isCorrect(sprite, num_q, num_a){
 
-		if(correct_answers[num_q - 1] == num_a){
+		if(correct_answers[num_q - 1] == num_a.number){
+			// add sound effect for getting it right
 			positionToAnswer(sprite);
+
+			if(current_question == 2){
+				num_wrong = 0;
+				current_question = 0;
+				answer_set = 3;
+				
+				window.setTimeout(reset, 2000);
+				//display_next_question();
+			}
+			else{
+				window.setTimeout(display_next_question, 2000);
+			}
 		}
 
 		else{
+			// Add sound effect for getting one wrong
 			num_wrong += 1;
-			console.log(num_wrong);console.log(wrong_marks);
-			wrong_marks[num_wrong - 1].renderable = true;
-			//if(num_wrong == 3){
-				// Execute losing screen
-			//}
+			wrong_marks[num_wrong - 1].visible = true;
+			enlarge(wrong_marks[num_wrong - 1])
+
+			if(num_wrong == 3){
+				// add sound effect for getting 3 wrong
+				
+				num_wrong = 0;
+				current_question = 0;
+				answer_set = 3;
+				changeView(losing_screen);
+			}
+
+			
 
 		}
-}
+	}
 
+
+	function display_next_question(){
+
+
+		if(current_question != 0){
+			for(var l=0; l < answer_list.length; l++){
+				if(answer_list[l].question == question_list[current_question-1].number){
+					answer_list[l].visible = false;
+					answer_list[l].interactive = false;
+
+				}
+
+			}
+		}
+
+		question_list[current_question].visible = true;
+		for (var k=0; k < answer_list.length; k++){
+			if(answer_list[k].question == question_list[current_question].number){
+				answer_list[k].visible = true;
+				answer_list[k].interactive = true;
+			}
+		}
+
+		answer_set += 4;
+		current_question += 1;
+	}
+/*
+	function display_next_question(){
+
+		if (current_question != 0){
+
+			question_list[current_question-1].visible = false;
+
+			for(var l = answer_set - 4; l >= answer_set - 7; l--){
+			answer_list[l].visible = false;
+			answer_list[l].interactive = false;
+			}
+		}
+
+		question_list[current_question].visible = true;
+		for(var k = answer_set; k >= answer_set - 3; k--){
+			answer_list[k].visible = true;
+			answer_list[k].interactive = true;
+
+		}
+		answer_set += 4;
+		current_question += 1;
+
+	}*/
+
+	display_next_question();
 } // ends load_title
 
 
@@ -215,6 +329,10 @@ function positionToAnswer(sprite){
 
 	createjs.Tween.get(sprite.position).to({x: 320, y: 200}, 1000);
 
+}
+
+function enlarge(sprite){
+	createjs.Tween.get(sprite.scale).to({x: .5, y: .5}, 1000);
 }
 
 // Changes the current displaying container

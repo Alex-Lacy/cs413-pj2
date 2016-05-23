@@ -192,11 +192,17 @@
             <key type="filename">assets/answer_1.2.png</key>
             <key type="filename">assets/answer_1.3.png</key>
             <key type="filename">assets/answer_1.4.png</key>
+            <key type="filename">assets/answer_2.1.png</key>
+            <key type="filename">assets/answer_2.2.png</key>
+            <key type="filename">assets/answer_2.3.png</key>
+            <key type="filename">assets/answer_2.4.png</key>
             <key type="filename">assets/hard.png</key>
+            <key type="filename">assets/lose_text.png</key>
             <key type="filename">assets/menu_bg.png</key>
             <key type="filename">assets/normal.png</key>
             <key type="filename">assets/press_enter.png</key>
             <key type="filename">assets/question_1.png</key>
+            <key type="filename">assets/question_2.png</key>
             <key type="filename">assets/select_difficulty.png</key>
             <key type="filename">assets/welcome_words.png</key>
             <key type="filename">assets/wrong.png</key>
@@ -219,6 +225,12 @@
             <filename>assets/normal.png</filename>
             <filename>assets/press_enter.png</filename>
             <filename>assets/question_1.png</filename>
+            <filename>assets/lose_text.png</filename>
+            <filename>assets/answer_2.1.png</filename>
+            <filename>assets/answer_2.2.png</filename>
+            <filename>assets/answer_2.3.png</filename>
+            <filename>assets/answer_2.4.png</filename>
+            <filename>assets/question_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
