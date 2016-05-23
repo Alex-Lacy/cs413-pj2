@@ -7,7 +7,8 @@ gameport.appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 
-
+var number_of_questions = 2;
+var correct_answers = [1, 3];
 
 // A container for the difficulty select screen
 var difficulty_select = new PIXI.Container();
@@ -28,6 +29,11 @@ var losing_screen = new PIXI.Container();
 stage.addChild(losing_screen);
 losing_screen.on('mousedown', reset);
 
+// A container for the winning screen
+var winning_screen = new PIXI.Container();
+stage.addChild(winning_screen);
+winning_screen.on('mousedown', reset);
+
 function reset(){
 	changeView(title_screen);
 	load_sprites();
@@ -43,6 +49,9 @@ difficulty_select.interactive = false;
 losing_screen.visible = false;
 losing_screen.interactive = false;
 
+winning_screen.visible = false;
+winning_screen.interactive = false;
+
 title_screen.visible = true;
 
 
@@ -53,6 +62,7 @@ title_screen.visible = true;
 PIXI.loader
 	.add("assets.json")
 	.load(load_sprites);
+
 
 // Creates sprites from spritesheet
 function load_sprites() {
@@ -71,6 +81,9 @@ function load_sprites() {
 
 	var losing_background = new PIXI.Sprite(menu_background);
 	losing_screen.addChild(losing_background);
+
+	var winning_backgroud = new PIXI.Sprite(menu_background);
+	winning_screen.addChild(winning_backgroud);
 
 
 
@@ -126,10 +139,10 @@ function load_sprites() {
 	// Sets the actual gameplay sprites
 	var question_list = [];
 	var answer_list = [];
-	var correct_answers = [1, 3];
+	
 	
 
-	for(var j=1; j<= 2; j++){
+	for(var j=1; j<= number_of_questions; j++){
 		var tempq = new PIXI.Sprite(PIXI.Texture.fromFrame('question_' + j + '.png'));
 		gameview.addChild(tempq);
 		tempq.anchor.x = 0;
@@ -155,7 +168,7 @@ function load_sprites() {
 			tempa.visible = false;
 			tempa.number = i;
 			tempa.question = j;
-			tempa.on('mousedown',isCorrect.bind(null, tempa, j, i));
+			tempa.on('mousedown',isCorrect.bind(null, tempa, tempq));
 
 			answer_list.push(tempa);
 		}
@@ -226,19 +239,19 @@ function load_sprites() {
 
 	var wrong_marks = [wrong1, wrong2, wrong3];
 
+	// need to fix correct
+	function isCorrect(answer_sprite, question_sprite){
 
-	function isCorrect(sprite, num_q, num_a){
-
-		if(correct_answers[num_q - 1] == num_a.number){
+		if(question_sprite.answer == answer_sprite.number){
 			// add sound effect for getting it right
-			positionToAnswer(sprite);
+			positionToAnswer(answer_sprite);
 
-			if(current_question == 2){
+			if(current_question == number_of_questions){
 				num_wrong = 0;
 				current_question = 0;
 				answer_set = 3;
 				
-				window.setTimeout(reset, 2000);
+				window.setTimeout(changeView.bind(null,winning_screen), 2000);
 				//display_next_question();
 			}
 			else{
@@ -258,7 +271,7 @@ function load_sprites() {
 				num_wrong = 0;
 				current_question = 0;
 				answer_set = 3;
-				changeView(losing_screen);
+				window.setTimeout(changeView.bind(null, losing_screen), 2000);
 			}
 
 			
@@ -273,6 +286,7 @@ function load_sprites() {
 		if(current_question != 0){
 			for(var l=0; l < answer_list.length; l++){
 				if(answer_list[l].question == question_list[current_question-1].number){
+					question_list[current_question-1].visible = false;
 					answer_list[l].visible = false;
 					answer_list[l].interactive = false;
 
