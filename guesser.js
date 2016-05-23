@@ -1,14 +1,14 @@
 
 // Basic game setup to display in HTML
 var gameport = document.getElementById("gameport");
-var renderer = PIXI.autoDetectRenderer(800, 500);
+var renderer = PIXI.autoDetectRenderer(806, 508);
 gameport.appendChild(renderer.view);
 
 var stage = new PIXI.Container();
 
 
-var number_of_questions = 2;
-var correct_answers = [1, 3];
+var number_of_questions = 4;
+var correct_answers = [1, 3, 4, 3];
 
 // A container for the difficulty select screen
 var difficulty_select = new PIXI.Container();
@@ -21,7 +21,6 @@ stage.addChild(gameview);
 // Creates the titlescreen container and functionality
 var title_screen = new PIXI.Container();
 stage.addChild(title_screen);
-title_screen.interactive = true;
 title_screen.on('mousedown', changeView.bind(null,difficulty_select));
 
 // A container for the losing screen
@@ -34,9 +33,13 @@ var winning_screen = new PIXI.Container();
 stage.addChild(winning_screen);
 winning_screen.on('mousedown', reset);
 
+// A container for the turtorial
+var turtorial = new PIXI.Container();
+stage.addChild(turtorial);
+
 function reset(){
 	changeView(title_screen);
-	load_sprites();
+	load_game();
 }
 
 // Sets the defaults for when the game is loaded
@@ -52,22 +55,26 @@ losing_screen.interactive = false;
 winning_screen.visible = false;
 winning_screen.interactive = false;
 
-title_screen.visible = true;
+turtorial.visible = false;
+turtorial.interactive = false;
 
+title_screen.visible = true;
+title_screen.interactive = true;
 
 
 
 
 // Reads in the spritesheet
 PIXI.loader
-	.add("assets.json")
-	.load(load_sprites);
+	.add("menu_assets.json")
+	.load(load_menus);
 
 
 // Creates sprites from spritesheet
-function load_sprites() {
+function load_menus() {
 	 
 	// Sets all of the sprites that use the generic menu background
+	
 	var menu_background = PIXI.Texture.fromFrame("menu_bg.png");
 
 	var title_background = new PIXI.Sprite(menu_background);
@@ -76,8 +83,7 @@ function load_sprites() {
 	var difficulty_select_background = new PIXI.Sprite(menu_background);
 	difficulty_select.addChild(difficulty_select_background);
 
-	var game_background = new PIXI.Sprite(menu_background);
-	gameview.addChild(game_background);
+	
 
 	var losing_background = new PIXI.Sprite(menu_background);
 	losing_screen.addChild(losing_background);
@@ -95,14 +101,15 @@ function load_sprites() {
 	welcome.position.x = 400;
 	welcome.position.y = 200;
 
-	var press_enter = new PIXI.Sprite(PIXI.Texture.fromFrame("press_enter.png"));
-	title_screen.addChild(press_enter);
-	press_enter.anchor.x = .5;
-	press_enter.anchor.y = .5;
-	press_enter.position.x = 400;
-	press_enter.position.y = 350;
-	press_enter.scale.x = .8;
-	press_enter.scale.y = .8;
+	var click_anywhere = PIXI.Texture.fromFrame("click_anywhere.png");
+	var title_click_anywhere = new PIXI.Sprite(click_anywhere);
+	title_screen.addChild(title_click_anywhere);
+	title_click_anywhere.anchor.x = .5;
+	title_click_anywhere.anchor.y = .5;
+	title_click_anywhere.position.x = 400;
+	title_click_anywhere.position.y = 350;
+	title_click_anywhere.scale.x = .8;
+	title_click_anywhere.scale.y = .8;
 
 
 
@@ -117,12 +124,22 @@ function load_sprites() {
 	pls_select.scale.x = 1.5;
 	pls_select.scale.y = 1.5;
 
+	var enter_turtorial = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial.png"));
+	difficulty_select.addChild(enter_turtorial);
+	enter_turtorial.anchor.x = .5;
+	enter_turtorial.anchor.y = .5;
+	enter_turtorial.position.x = 400;
+	enter_turtorial.position.y = 250;
+	enter_turtorial.interactive = true;
+	enter_turtorial.on('mousedown',changeView.bind(null,turtorial));
+
+
 	var normal = new PIXI.Sprite(PIXI.Texture.fromFrame("normal.png"));
 	difficulty_select.addChild(normal);
 	normal.anchor.x = .5;
 	normal.anchor.y = .5;
 	normal.position.x = 400;
-	normal.position.y = 200;
+	normal.position.y = 325;
 	normal.interactive = true;
 	normal.on('mousedown',changeView.bind(null,gameview));
 
@@ -131,12 +148,100 @@ function load_sprites() {
 	hard.anchor.x = .5;
 	hard.anchor.y = .5;
 	hard.position.x = 400;
-	hard.position.y = 250;
+	hard.position.y = 400;
 	hard.interactive = true;
 
 
+	// Sets the turtorials sprites
 
-	// Sets the actual gameplay sprites
+	var page1 = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial1.png"));
+	turtorial.addChild(page1);
+	page1.visible = true;
+	page1.interactive = true;
+	page1.scale.x = 1.007;
+	page1.scale.y = 1.013;
+	page1.on('mousedown',nextTurtorialPage);
+
+	var page2 = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial2.png"));
+	turtorial.addChild(page2);
+	page2.visible = false;
+	page2.interactive - false;
+	page2.scale.x = 1.007
+	page2.scale.y = 1.013;
+	page2.on('mousedown', reset);
+
+	function nextTurtorialPage () {
+		page1.visible = false;
+		page1.interactive = false;
+		page2.visible = true;
+		page2.interactive = true;
+
+	}
+
+	// Sets the winning screens sprites
+	var you_win = new PIXI.Sprite(PIXI.Texture.fromFrame("win_text.png"));
+	winning_screen.addChild(you_win);
+	you_win.position.x = 100;
+	you_win.position.y = 100;
+
+
+	var win_click_anywhere = new PIXI.Sprite(click_anywhere);
+	you_win.addChild(win_click_anywhere);
+	win_click_anywhere.anchor.x = .5;
+	win_click_anywhere.anchor.y = .5;
+	win_click_anywhere.position.x = 400;
+	win_click_anywhere.position.y = 350;
+	win_click_anywhere.scale.x = .8;
+	win_click_anywhere.scale.y = .8;
+
+
+	var you_lose = new PIXI.Sprite(PIXI.Texture.fromFrame('lose_text.png'));
+	losing_screen.addChild(you_lose);
+	you_lose.position.x = 100;
+	you_lose.position.y = 100;
+
+/*
+	function display_next_question(){
+
+		if (current_question != 0){
+
+			question_list[current_question-1].visible = false;
+
+			for(var l = answer_set - 4; l >= answer_set - 7; l--){
+			answer_list[l].visible = false;
+			answer_list[l].interactive = false;
+			}
+		}
+
+		question_list[current_question].visible = true;
+		for(var k = answer_set; k >= answer_set - 3; k--){
+			answer_list[k].visible = true;
+			answer_list[k].interactive = true;
+
+		}
+		answer_set += 4;
+		current_question += 1;
+
+	}*/
+
+	
+} // ends load_menus
+
+
+
+PIXI.loader
+	.add("game_assets.json")
+	.load(load_game);
+
+function load_game(){
+
+
+
+	var menu_background = PIXI.Texture.fromFrame("menu_bg.png");
+	var game_background = new PIXI.Sprite(menu_background);
+	gameview.addChild(game_background);
+
+// Sets the actual gameplay sprites
 	var question_list = [];
 	var answer_list = [];
 	
@@ -147,7 +252,7 @@ function load_sprites() {
 		gameview.addChild(tempq);
 		tempq.anchor.x = 0;
 		tempq.anchor.y = .5;
-		tempq.position.x = 300;
+		tempq.position.x = 100;
 		tempq.position.y = 200;
 		tempq.visible = false;
 		tempq.number = j;
@@ -162,7 +267,7 @@ function load_sprites() {
 			gameview.addChild(tempa);
 			tempa.anchor.x = .5;
 			tempa.anchor.y = .5;
-			tempa.position.x = i * (renderer.width / 5);
+			tempa.position.x = (i * (renderer.width / 4)) - 100;
 			tempa.position.y = 400;
 			tempa.interactive = false;
 			tempa.visible = false;
@@ -217,8 +322,6 @@ function load_sprites() {
 	wrong3.visible = false;
 
 
-	var you_lose = new PIXI.Sprite(PIXI.Texture.fromFrame('lose_text.png'));
-	losing_screen.addChild(you_lose);
 
 	
 	/*
@@ -306,32 +409,21 @@ function load_sprites() {
 		answer_set += 4;
 		current_question += 1;
 	}
-/*
-	function display_next_question(){
-
-		if (current_question != 0){
-
-			question_list[current_question-1].visible = false;
-
-			for(var l = answer_set - 4; l >= answer_set - 7; l--){
-			answer_list[l].visible = false;
-			answer_list[l].interactive = false;
-			}
-		}
-
-		question_list[current_question].visible = true;
-		for(var k = answer_set; k >= answer_set - 3; k--){
-			answer_list[k].visible = true;
-			answer_list[k].interactive = true;
-
-		}
-		answer_set += 4;
-		current_question += 1;
-
-	}*/
 
 	display_next_question();
-} // ends load_title
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -341,7 +433,7 @@ function load_sprites() {
 function positionToAnswer(sprite){
 
 
-	createjs.Tween.get(sprite.position).to({x: 320, y: 200}, 1000);
+	createjs.Tween.get(sprite.position).to({x: 175, y: 198}, 1000);
 
 }
 

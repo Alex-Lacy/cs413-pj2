@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.1</string>
         <key>fileName</key>
-        <string>C:/xampp/htdocs/cs413/cs413/project_2/assets.tps</string>
+        <string>C:/xampp/htdocs/cs413/cs413/project_2/game_assets.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -141,7 +141,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>assets.json</filename>
+                <filename>game_assets.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -196,17 +196,24 @@
             <key type="filename">assets/answer_2.2.png</key>
             <key type="filename">assets/answer_2.3.png</key>
             <key type="filename">assets/answer_2.4.png</key>
-            <key type="filename">assets/hard.png</key>
-            <key type="filename">assets/lose_text.png</key>
+            <key type="filename">assets/answer_3.1.png</key>
+            <key type="filename">assets/answer_3.2.png</key>
+            <key type="filename">assets/answer_3.3.png</key>
+            <key type="filename">assets/answer_3.4.png</key>
+            <key type="filename">assets/answer_4.1.png</key>
+            <key type="filename">assets/answer_4.2.png</key>
+            <key type="filename">assets/answer_4.3.png</key>
+            <key type="filename">assets/answer_4.4.png</key>
+            <key type="filename">assets/answer_5.1.png</key>
+            <key type="filename">assets/answer_5.2.png</key>
+            <key type="filename">assets/answer_5.3.png</key>
+            <key type="filename">assets/answer_5.4.png</key>
             <key type="filename">assets/menu_bg.png</key>
-            <key type="filename">assets/normal.png</key>
-            <key type="filename">assets/press_enter.png</key>
             <key type="filename">assets/question_1.png</key>
             <key type="filename">assets/question_2.png</key>
-            <key type="filename">assets/select_difficulty.png</key>
-            <key type="filename">assets/turtorial1.png</key>
-            <key type="filename">assets/turtorial2.png</key>
-            <key type="filename">assets/welcome_words.png</key>
+            <key type="filename">assets/question_3.png</key>
+            <key type="filename">assets/question_4.png</key>
+            <key type="filename">assets/question_5.png</key>
             <key type="filename">assets/wrong.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -215,26 +222,33 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>assets/select_difficulty.png</filename>
-            <filename>assets/welcome_words.png</filename>
-            <filename>assets/wrong.png</filename>
+            <filename>assets/answer_5.4.png</filename>
             <filename>assets/answer_1.1.png</filename>
             <filename>assets/answer_1.2.png</filename>
             <filename>assets/answer_1.3.png</filename>
             <filename>assets/answer_1.4.png</filename>
-            <filename>assets/hard.png</filename>
-            <filename>assets/menu_bg.png</filename>
-            <filename>assets/normal.png</filename>
-            <filename>assets/press_enter.png</filename>
-            <filename>assets/question_1.png</filename>
-            <filename>assets/lose_text.png</filename>
             <filename>assets/answer_2.1.png</filename>
             <filename>assets/answer_2.2.png</filename>
             <filename>assets/answer_2.3.png</filename>
             <filename>assets/answer_2.4.png</filename>
+            <filename>assets/answer_3.1.png</filename>
+            <filename>assets/answer_3.2.png</filename>
+            <filename>assets/answer_3.3.png</filename>
+            <filename>assets/answer_3.4.png</filename>
+            <filename>assets/answer_4.1.png</filename>
+            <filename>assets/answer_4.2.png</filename>
+            <filename>assets/answer_4.3.png</filename>
+            <filename>assets/answer_4.4.png</filename>
+            <filename>assets/answer_5.1.png</filename>
+            <filename>assets/answer_5.2.png</filename>
+            <filename>assets/answer_5.3.png</filename>
+            <filename>assets/menu_bg.png</filename>
+            <filename>assets/question_5.png</filename>
+            <filename>assets/question_1.png</filename>
             <filename>assets/question_2.png</filename>
-            <filename>assets/turtorial1.png</filename>
-            <filename>assets/turtorial2.png</filename>
+            <filename>assets/question_3.png</filename>
+            <filename>assets/question_4.png</filename>
+            <filename>assets/wrong.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

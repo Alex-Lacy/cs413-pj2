@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.1</string>
         <key>fileName</key>
-        <string>C:/xampp/htdocs/cs413/cs413/project_2/assets.tps</string>
+        <string>C:/xampp/htdocs/cs413/cs413/project_2/menu_assets.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -28,7 +28,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
@@ -141,7 +141,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>assets.json</filename>
+                <filename>menu_assets.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -188,26 +188,17 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">assets/answer_1.1.png</key>
-            <key type="filename">assets/answer_1.2.png</key>
-            <key type="filename">assets/answer_1.3.png</key>
-            <key type="filename">assets/answer_1.4.png</key>
-            <key type="filename">assets/answer_2.1.png</key>
-            <key type="filename">assets/answer_2.2.png</key>
-            <key type="filename">assets/answer_2.3.png</key>
-            <key type="filename">assets/answer_2.4.png</key>
+            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/menu_bg.png</key>
+            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</key>
+            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</key>
+            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/win_text.png</key>
+            <key type="filename">assets/click_anywhere.png</key>
             <key type="filename">assets/hard.png</key>
             <key type="filename">assets/lose_text.png</key>
-            <key type="filename">assets/menu_bg.png</key>
             <key type="filename">assets/normal.png</key>
-            <key type="filename">assets/press_enter.png</key>
-            <key type="filename">assets/question_1.png</key>
-            <key type="filename">assets/question_2.png</key>
             <key type="filename">assets/select_difficulty.png</key>
-            <key type="filename">assets/turtorial1.png</key>
-            <key type="filename">assets/turtorial2.png</key>
+            <key type="filename">assets/turtorial.png</key>
             <key type="filename">assets/welcome_words.png</key>
-            <key type="filename">assets/wrong.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -215,26 +206,17 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>assets/select_difficulty.png</filename>
-            <filename>assets/welcome_words.png</filename>
-            <filename>assets/wrong.png</filename>
-            <filename>assets/answer_1.1.png</filename>
-            <filename>assets/answer_1.2.png</filename>
-            <filename>assets/answer_1.3.png</filename>
-            <filename>assets/answer_1.4.png</filename>
-            <filename>assets/hard.png</filename>
-            <filename>assets/menu_bg.png</filename>
-            <filename>assets/normal.png</filename>
-            <filename>assets/press_enter.png</filename>
-            <filename>assets/question_1.png</filename>
             <filename>assets/lose_text.png</filename>
-            <filename>assets/answer_2.1.png</filename>
-            <filename>assets/answer_2.2.png</filename>
-            <filename>assets/answer_2.3.png</filename>
-            <filename>assets/answer_2.4.png</filename>
-            <filename>assets/question_2.png</filename>
-            <filename>assets/turtorial1.png</filename>
-            <filename>assets/turtorial2.png</filename>
+            <filename>assets/normal.png</filename>
+            <filename>assets/select_difficulty.png</filename>
+            <filename>assets/turtorial.png</filename>
+            <filename>assets/welcome_words.png</filename>
+            <filename>assets/click_anywhere.png</filename>
+            <filename>assets/hard.png</filename>
+            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/menu_bg.png</filename>
+            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</filename>
+            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</filename>
+            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/win_text.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
