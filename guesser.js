@@ -75,7 +75,30 @@ credits.interactive = false;
 title_screen.visible = true;
 title_screen.interactive = true;
 
+var blip;
+var correct_sound;
+var wrong_sound;
+var victory;
+var defeat;
 
+PIXI.loader
+	.add("blip_select.wav")
+	.add("correct.wav")
+	.add("wrong.wav")
+	.add("victory.wav")
+	.add("defeat.wav")
+	.load(load_sound);
+
+function load_sound(){
+
+	blip = PIXI.audioManager.getAudio("blip_select.wav");
+	correct_sound = PIXI.audioManager.getAudio("correct.wav");
+	wrong_sound = PIXI.audioManager.getAudio("wrong.wav");
+	victory = PIXI.audioManager.getAudio("victory.wav");
+	defeat = PIXI.audioManager.getAudio("defeat.wav");
+	blip.play();
+
+}
 
 
 // Reads in the spritesheet
@@ -107,6 +130,9 @@ function load_menus() {
 
 	var credits_background = new PIXI.Sprite(menu_background);
 	credits.addChild(credits_background);
+
+
+
 
 
 
@@ -188,14 +214,26 @@ function load_menus() {
 	page2.interactive - false;
 	page2.scale.x = 1.007
 	page2.scale.y = 1.013;
-	page2.on('mousedown', reset);
+	page2.on('mousedown', endTurtorial);
 
 	function nextTurtorialPage () {
+
+		blip.play();
 		page1.visible = false;
 		page1.interactive = false;
 		page2.visible = true;
 		page2.interactive = true;
 
+	}
+
+
+	function endTurtorial(){
+
+	page1.visible = true;
+	page1.interactive = true;
+	page2.visible = false;
+	page2.interactive = false;
+	reset();
 	}
 
 	// Sets the winning screens sprites
@@ -337,48 +375,54 @@ function load_game(){
 
 
 	
-	//var num_right = 0;
+
 	var num_wrong = 0;
-	//var num_asked = 0;
+
 	var current_question = 0;
 	var answer_set = 3; // groups of 3
 
 	var wrong_marks = [wrong1, wrong2, wrong3];
 
-	// need to fix correct
+
 	function isCorrect(answer_sprite, question_sprite){
 
 		if(question_sprite.answer == answer_sprite.number){
-			// add sound effect for getting it right
+
 			positionToAnswer(answer_sprite);
 
 			if(current_question == number_of_questions){
+
+				victory.play();
 				num_wrong = 0;
 				current_question = 0;
 				answer_set = 3;
 				
 				window.setTimeout(changeView.bind(null,winning_screen), 2000);
-				//display_next_question();
+				
 			}
 			else{
+				
+				correct_sound.play();
 				window.setTimeout(display_next_question, 2000);
 			}
 		}
 
 		else{
-			// Add sound effect for getting one wrong
+
 			num_wrong += 1;
 			wrong_marks[num_wrong - 1].visible = true;
 			enlarge(wrong_marks[num_wrong - 1])
 
 			if(num_wrong == num_lives){
-				// add sound effect for getting 3 wrong
 				
 				num_wrong = 0;
 				current_question = 0;
 				answer_set = 3;
+				defeat.play()
 				window.setTimeout(changeView.bind(null, losing_screen), 2000);
 			}
+
+			else wrong_sound.play();
 
 			
 
@@ -412,6 +456,7 @@ function load_game(){
 
 		answer_set += 4;
 		current_question += 1;
+		blip.play()
 	}
 
 	display_next_question();
@@ -447,6 +492,8 @@ function enlarge(sprite){
 // Changes the current displaying container
 function changeView(view){
 
+	blip.play();
+
 	for(var i=0; i<stage.children.length; i++){
 		stage.children[i].visible = false;
 		stage.children[i].interactive = false;
@@ -454,6 +501,8 @@ function changeView(view){
 
 	view.visible = true;
 	view.interactive = true;
+
+	
 }
 
 
@@ -464,6 +513,7 @@ function changeView(view){
 function animate(){
 	requestAnimationFrame(animate);
 	renderer.render(stage);
+
 
 }
 
