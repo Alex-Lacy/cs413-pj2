@@ -1,17 +1,17 @@
 {"frames": {
 
-"turtorial.png":
+"tutorial.png":
 {
-	"frame": {"x":0,"y":0,"w":117,"h":27},
+	"frame": {"x":0,"y":0,"w":105,"h":27},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":27},
-	"sourceSize": {"w":117,"h":27},
+	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":27},
+	"sourceSize": {"w":105,"h":27},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "hard.png":
 {
-	"frame": {"x":117,"y":0,"w":66,"h":27},
+	"frame": {"x":105,"y":0,"w":66,"h":27},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":27},
@@ -20,7 +20,7 @@
 },
 "normal.png":
 {
-	"frame": {"x":183,"y":0,"w":103,"h":27},
+	"frame": {"x":171,"y":0,"w":103,"h":27},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":27},
@@ -29,7 +29,7 @@
 },
 "click_anywhere.png":
 {
-	"frame": {"x":286,"y":0,"w":385,"h":34},
+	"frame": {"x":274,"y":0,"w":385,"h":34},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":385,"h":34},
@@ -38,7 +38,7 @@
 },
 "select_difficulty.png":
 {
-	"frame": {"x":671,"y":0,"w":515,"h":51},
+	"frame": {"x":659,"y":0,"w":515,"h":51},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":515,"h":51},
@@ -72,7 +72,7 @@
 	"sourceSize": {"w":351,"h":268},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"turtorial2.png":
+"tutorial2.png":
 {
 	"frame": {"x":0,"y":319,"w":800,"h":500},
 	"rotated": false,
@@ -81,7 +81,7 @@
 	"sourceSize": {"w":800,"h":500},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"turtorial1.png":
+"tutorial1.png":
 {
 	"frame": {"x":800,"y":319,"w":800,"h":500},
 	"rotated": false,
@@ -115,6 +115,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1606,"h":1679},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9774bb1619e4ba3c76f7cc650d878212:b80feb40c218a7687ba344c3a2b68dd6:ac44bc723631164be8f9e02d23db35a8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fa685180c0405ba3e51f9d9d8661cc61:86d2023df3d2ef5e2c4a9a15ec411abc:ac44bc723631164be8f9e02d23db35a8$"
 }
 }

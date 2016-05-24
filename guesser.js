@@ -8,8 +8,8 @@ gameport.appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 
-var number_of_questions = 4;
-var correct_answers = [1, 3, 4, 3];
+var number_of_questions = 10;
+var correct_answers = [1, 3, 4, 3, 1, 2, 4, 4, 1, 4];
 
 // A container for the difficulty select screen
 var difficulty_select = new PIXI.Container();
@@ -40,9 +40,9 @@ var winning_screen = new PIXI.Container();
 stage.addChild(winning_screen);
 winning_screen.on('mousedown', changeView.bind(null,credits));
 
-// A container for the turtorial
-var turtorial = new PIXI.Container();
-stage.addChild(turtorial);
+// A container for the tutorial
+var tutorial = new PIXI.Container();
+stage.addChild(tutorial);
 
 
 var num_lives = 3; // 3 = normal, 1 = hard
@@ -66,8 +66,8 @@ losing_screen.interactive = false;
 winning_screen.visible = false;
 winning_screen.interactive = false;
 
-turtorial.visible = false;
-turtorial.interactive = false;
+tutorial.visible = false;
+tutorial.interactive = false;
 
 credits.visible = false;
 credits.interactive = false;
@@ -167,14 +167,14 @@ function load_menus() {
 	pls_select.scale.x = 1.5;
 	pls_select.scale.y = 1.5;
 
-	var enter_turtorial = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial.png"));
-	difficulty_select.addChild(enter_turtorial);
-	enter_turtorial.anchor.x = .5;
-	enter_turtorial.anchor.y = .5;
-	enter_turtorial.position.x = 400;
-	enter_turtorial.position.y = 250;
-	enter_turtorial.interactive = true;
-	enter_turtorial.on('mousedown',changeView.bind(null,turtorial));
+	var enter_tutorial = new PIXI.Sprite(PIXI.Texture.fromFrame("tutorial.png"));
+	difficulty_select.addChild(enter_tutorial);
+	enter_tutorial.anchor.x = .5;
+	enter_tutorial.anchor.y = .5;
+	enter_tutorial.position.x = 400;
+	enter_tutorial.position.y = 250;
+	enter_tutorial.interactive = true;
+	enter_tutorial.on('mousedown',changeView.bind(null,tutorial));
 
 
 	var normal = new PIXI.Sprite(PIXI.Texture.fromFrame("normal.png"));
@@ -198,25 +198,25 @@ function load_menus() {
 	hard.on('mousedown',changeView.bind(null,gameview));
 
 
-	// Sets the turtorials sprites
+	// Sets the tutorials sprites
 
-	var page1 = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial1.png"));
-	turtorial.addChild(page1);
+	var page1 = new PIXI.Sprite(PIXI.Texture.fromFrame("tutorial1.png"));
+	tutorial.addChild(page1);
 	page1.visible = true;
 	page1.interactive = true;
 	page1.scale.x = 1.007;
 	page1.scale.y = 1.013;
-	page1.on('mousedown',nextTurtorialPage);
+	page1.on('mousedown',nextTutorialPage);
 
-	var page2 = new PIXI.Sprite(PIXI.Texture.fromFrame("turtorial2.png"));
-	turtorial.addChild(page2);
+	var page2 = new PIXI.Sprite(PIXI.Texture.fromFrame("tutorial2.png"));
+	tutorial.addChild(page2);
 	page2.visible = false;
 	page2.interactive - false;
 	page2.scale.x = 1.007
 	page2.scale.y = 1.013;
-	page2.on('mousedown', endTurtorial);
+	page2.on('mousedown', endTutorial);
 
-	function nextTurtorialPage () {
+	function nextTutorialPage () {
 
 		blip.play();
 		page1.visible = false;
@@ -227,7 +227,7 @@ function load_menus() {
 	}
 
 
-	function endTurtorial(){
+	function endTutorial(){
 
 	page1.visible = true;
 	page1.interactive = true;
@@ -401,7 +401,7 @@ function load_game(){
 				
 			}
 			else{
-				
+
 				correct_sound.play();
 				window.setTimeout(display_next_question, 2000);
 			}

@@ -188,18 +188,18 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/credits.png</key>
-            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/menu_bg.png</key>
-            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</key>
-            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</key>
-            <key type="filename">../../../../../Users/alex4/Documents/Expression/Expression Design/win_text.png</key>
             <key type="filename">assets/click_anywhere.png</key>
+            <key type="filename">assets/credits.png</key>
             <key type="filename">assets/hard.png</key>
             <key type="filename">assets/lose_text.png</key>
+            <key type="filename">assets/menu_bg.png</key>
             <key type="filename">assets/normal.png</key>
             <key type="filename">assets/select_difficulty.png</key>
-            <key type="filename">assets/turtorial.png</key>
+            <key type="filename">assets/tutorial.png</key>
+            <key type="filename">assets/tutorial1.png</key>
+            <key type="filename">assets/tutorial2.png</key>
             <key type="filename">assets/welcome_words.png</key>
+            <key type="filename">assets/win_text.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -207,18 +207,18 @@
         </map>
         <key>fileList</key>
         <array>
+            <filename>assets/welcome_words.png</filename>
+            <filename>assets/win_text.png</filename>
+            <filename>assets/credits.png</filename>
+            <filename>assets/hard.png</filename>
             <filename>assets/lose_text.png</filename>
+            <filename>assets/menu_bg.png</filename>
             <filename>assets/normal.png</filename>
             <filename>assets/select_difficulty.png</filename>
-            <filename>assets/turtorial.png</filename>
-            <filename>assets/welcome_words.png</filename>
+            <filename>assets/tutorial.png</filename>
+            <filename>assets/tutorial1.png</filename>
             <filename>assets/click_anywhere.png</filename>
-            <filename>assets/hard.png</filename>
-            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/menu_bg.png</filename>
-            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial2.png</filename>
-            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/turtorial1.png</filename>
-            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/win_text.png</filename>
-            <filename>../../../../../Users/alex4/Documents/Expression/Expression Design/credits.png</filename>
+            <filename>assets/tutorial2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

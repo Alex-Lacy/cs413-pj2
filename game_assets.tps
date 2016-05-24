@@ -192,6 +192,10 @@
             <key type="filename">assets/answer_1.2.png</key>
             <key type="filename">assets/answer_1.3.png</key>
             <key type="filename">assets/answer_1.4.png</key>
+            <key type="filename">assets/answer_10.1.png</key>
+            <key type="filename">assets/answer_10.2.png</key>
+            <key type="filename">assets/answer_10.3.png</key>
+            <key type="filename">assets/answer_10.4.png</key>
             <key type="filename">assets/answer_2.1.png</key>
             <key type="filename">assets/answer_2.2.png</key>
             <key type="filename">assets/answer_2.3.png</key>
@@ -208,12 +212,33 @@
             <key type="filename">assets/answer_5.2.png</key>
             <key type="filename">assets/answer_5.3.png</key>
             <key type="filename">assets/answer_5.4.png</key>
+            <key type="filename">assets/answer_6.1.png</key>
+            <key type="filename">assets/answer_6.2.png</key>
+            <key type="filename">assets/answer_6.3.png</key>
+            <key type="filename">assets/answer_6.4.png</key>
+            <key type="filename">assets/answer_7.1.png</key>
+            <key type="filename">assets/answer_7.2.png</key>
+            <key type="filename">assets/answer_7.3.png</key>
+            <key type="filename">assets/answer_7.4.png</key>
+            <key type="filename">assets/answer_8.1.png</key>
+            <key type="filename">assets/answer_8.2.png</key>
+            <key type="filename">assets/answer_8.3.png</key>
+            <key type="filename">assets/answer_8.4.png</key>
+            <key type="filename">assets/answer_9.1.png</key>
+            <key type="filename">assets/answer_9.2.png</key>
+            <key type="filename">assets/answer_9.3.png</key>
+            <key type="filename">assets/answer_9.4.png</key>
             <key type="filename">assets/menu_bg.png</key>
             <key type="filename">assets/question_1.png</key>
+            <key type="filename">assets/question_10.png</key>
             <key type="filename">assets/question_2.png</key>
             <key type="filename">assets/question_3.png</key>
             <key type="filename">assets/question_4.png</key>
             <key type="filename">assets/question_5.png</key>
+            <key type="filename">assets/question_6.png</key>
+            <key type="filename">assets/question_7.png</key>
+            <key type="filename">assets/question_8.png</key>
+            <key type="filename">assets/question_9.png</key>
             <key type="filename">assets/wrong.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -222,7 +247,24 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>assets/answer_5.4.png</filename>
+            <filename>assets/answer_6.3.png</filename>
+            <filename>assets/answer_6.4.png</filename>
+            <filename>assets/answer_7.1.png</filename>
+            <filename>assets/answer_7.2.png</filename>
+            <filename>assets/answer_7.3.png</filename>
+            <filename>assets/answer_7.4.png</filename>
+            <filename>assets/answer_8.1.png</filename>
+            <filename>assets/answer_8.2.png</filename>
+            <filename>assets/answer_8.3.png</filename>
+            <filename>assets/answer_8.4.png</filename>
+            <filename>assets/answer_9.1.png</filename>
+            <filename>assets/answer_9.2.png</filename>
+            <filename>assets/answer_9.3.png</filename>
+            <filename>assets/answer_9.4.png</filename>
+            <filename>assets/answer_10.1.png</filename>
+            <filename>assets/answer_10.2.png</filename>
+            <filename>assets/answer_10.3.png</filename>
+            <filename>assets/answer_10.4.png</filename>
             <filename>assets/answer_1.1.png</filename>
             <filename>assets/answer_1.2.png</filename>
             <filename>assets/answer_1.3.png</filename>
@@ -242,13 +284,21 @@
             <filename>assets/answer_5.1.png</filename>
             <filename>assets/answer_5.2.png</filename>
             <filename>assets/answer_5.3.png</filename>
+            <filename>assets/answer_5.4.png</filename>
+            <filename>assets/answer_6.1.png</filename>
+            <filename>assets/answer_6.2.png</filename>
             <filename>assets/menu_bg.png</filename>
-            <filename>assets/question_5.png</filename>
+            <filename>assets/wrong.png</filename>
+            <filename>assets/question_9.png</filename>
+            <filename>assets/question_10.png</filename>
             <filename>assets/question_1.png</filename>
             <filename>assets/question_2.png</filename>
             <filename>assets/question_3.png</filename>
             <filename>assets/question_4.png</filename>
-            <filename>assets/wrong.png</filename>
+            <filename>assets/question_5.png</filename>
+            <filename>assets/question_6.png</filename>
+            <filename>assets/question_7.png</filename>
+            <filename>assets/question_8.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
