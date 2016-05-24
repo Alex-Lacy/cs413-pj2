@@ -281,10 +281,6 @@
             <filename>assets/answer_4.2.png</filename>
             <filename>assets/answer_4.3.png</filename>
             <filename>assets/answer_4.4.png</filename>
-            <filename>assets/answer_5.1.png</filename>
-            <filename>assets/answer_5.2.png</filename>
-            <filename>assets/answer_5.3.png</filename>
-            <filename>assets/answer_5.4.png</filename>
             <filename>assets/answer_6.1.png</filename>
             <filename>assets/answer_6.2.png</filename>
             <filename>assets/menu_bg.png</filename>
@@ -299,6 +295,10 @@
             <filename>assets/question_6.png</filename>
             <filename>assets/question_7.png</filename>
             <filename>assets/question_8.png</filename>
+            <filename>assets/answer_5.4.png</filename>
+            <filename>assets/answer_5.1.png</filename>
+            <filename>assets/answer_5.2.png</filename>
+            <filename>assets/answer_5.3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
